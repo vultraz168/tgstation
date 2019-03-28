@@ -594,4 +594,117 @@
 	desc = "This informational poster teaches the viewer what carbon dioxide is."
 	icon_state = "poster35_legit"
 
+/obj/structure/sign/poster/flag
+	poster_item_name = "Country Flag"
+	poster_item_desc = "An official Nanotrasen-sanctioned flag. It comes with state-of-the-art adhesive backing, for easy pinning to any vertical surface."
+	poster_item_icon_state = "folded_flag"
+	icon = 'icons/obj/patriotism.dmi'
+
+/obj/structure/sign/poster/flag/random
+	name = "random official flag"
+	random_basetype = /obj/structure/sign/poster/flag
+	icon_state = "folded_flag"
+	never_random = TRUE
+
+/obj/structure/sign/poster/flag/usayy
+	name = "Flag of The United States of America"
+	desc = "As you admire this beauty you swear you hear an aircraft approaching."
+	icon_state = "flag1_legit"
+
+/obj/structure/sign/poster/flag/canada
+	name = "Canadian Flag"
+	desc = "Smells of maple syrup"
+	icon_state = "flag2_legit"
+
+/obj/structure/sign/poster/flag/rusk
+	name = "Flag of The Russian Federation"
+	desc = "Used to mark designated squatting only loiter zones."
+	icon_state = "flag3_legit"
+
+/obj/structure/sign/poster/flag/nippon
+	name = "Japanese Flag"
+	desc = "Naruto headbands remain illegal to wear onboard nanotrasen facilities."
+	icon_state = "flag4_legit"
+
+/obj/structure/sign/poster/flag/swedeistan
+	name = "Swedish Flag"
+	desc = "Smells of kebab and sulfur."
+	icon_state = "flag5_legit"
+
+/obj/structure/sign/poster/flag/britbong
+	name = "Flag of the UK"
+	desc = "ARE YOU FROM BRITISH?"
+	icon_state = "flag6_legit"
+
+/obj/structure/sign/poster/flag/finland
+	name = "Flag of Finland"
+	desc = "Preserved after the second finno-korean hyperwar, has ':DDDDDDDDDD' embroided into it."
+	icon_state = "flag7_legit"
+
+/obj/structure/sign/poster/flag/baguette
+	name = "French Flag"
+	desc = "Muuuuahaaaa the French."
+	icon_state = "flag8_legit"
+
+/obj/structure/sign/poster/flag/rico
+	name = "Puerto Rican Flag"
+	desc = "For the token shitskins aboard to feel good about."
+	icon_state = "flag9_legit"
+
+/obj/structure/sign/poster/flag/contraband
+	poster_item_name = "flag"
+	poster_item_desc = "This flag comes with its own automatic adhesive mechanism, for easy pinning to any vertical surface. Controversial in nature."
+	poster_item_icon_state = "folded_flag"
+
+/obj/structure/sign/poster/flag/contraband/random
+	name = "random official poster"
+	icon_state = "random_contraband"
+	never_random = TRUE
+	random_basetype = /obj/structure/sign/poster/flag/contraband
+
+/obj/structure/sign/poster/flag/contraband/reich
+	name = "Flag of the Third Reich"
+	desc = "For when it becomes all so tiresome."
+	icon_state = "flag1"
+
+/obj/structure/sign/poster/flag/contraband/confederate
+	name = "Confederate flag"
+	desc = "A favorite of cargonians everywhere."
+	icon_state = "flag2"
+
+/obj/structure/sign/poster/flag/contraband/isil
+	name = "Flag of The Islamic State of Iraq and the Levant"
+	desc = "Place in toxins for a complimentary armed response."
+	icon_state = "flag3"
+
+/obj/structure/sign/poster/flag/contraband/basque
+	name = "Basque Ikurriña"
+	desc = "Bietan jarrai!."
+	icon_state = "flag4"
+
+/obj/structure/sign/poster/flag/contraband/riconat
+	name = "Flag of The Puerto Rican Nationalist Party"
+	desc = "For the token shitskins aboard to feel nationalistic pride."
+	icon_state = "flag5"
+
+/obj/structure/sign/poster/flag/contraband/NK
+	name = "Flag of The Democratic People's Republic of Korea"
+	desc = "Kangsong Daeguk!."
+	icon_state = "flag6"
+
+
+//folded flags random for cargo and mapping
+/obj/item/poster/flag/flag_contraband_random
+	name = "random contraband poster"
+	poster_type = /obj/structure/sign/poster/flag/contraband/random
+	icon_state = "folded_flag"
+
+//sanctioned flags
+/obj/item/poster/flag/flag_random
+	name = "random contraband poster"
+	poster_type = /obj/structure/sign/poster/flag/random
+	icon = 'icons/obj/patriotism.dmi'
+	icon_state = "folded_flag"
+
+
 #undef PLACE_SPEED
