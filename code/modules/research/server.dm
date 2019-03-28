@@ -8,7 +8,7 @@
 	//Code for point mining here.
 	var/working = TRUE			//temperature should break it.
 	var/server_id = 0
-	var/base_mining_income = 2
+	var/base_mining_income = 50
 	var/heat_gen = 100
 	var/heating_power = 40000
 	var/delay = 5
