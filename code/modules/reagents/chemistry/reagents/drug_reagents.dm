@@ -160,7 +160,7 @@
 	if(!istype(M.dna.species, /datum/species/krokodil_addict))
 		to_chat(M, "<span class='userdanger'>Your skin falls off easily!</span>")
 		M.adjustBruteLoss(50*REM, 0) // holy shit your skin just FELL THE FUCK OFF
-		M.set_species(/datum/species/krokodil_addict)
+		M.set_species(/datum/species/skeleton)
 	else
 		M.adjustBruteLoss(5*REM, 0)
 	..()
