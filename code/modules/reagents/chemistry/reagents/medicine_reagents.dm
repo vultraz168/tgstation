@@ -1345,3 +1345,34 @@
 	M.adjustToxLoss(1, 0)
 	..()
 	. = 1
+
+
+/datum/reagent/medicine/hyperzine
+	name = "Hyperzine"
+	id = "hyperzine"
+	description = "Hyperzine is a highly effective, long lasting, muscle stimulant."
+	reagent_state = LIQUID
+	color = "#C8A5DC" // rgb: 200, 165, 220
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = 60
+
+/datum/reagent/medicine/hyperzine/on_mob_life(var/mob/living/M as mob)
+	if(M.stat != DEAD)
+		if(prob(5))
+			M.emote(pick("twitch","blink_r","shiver"))
+/datum/reagent/medicine/hyperzine/on_mob_add(mob/living/L)
+	..()
+	L.add_movespeed_modifier(id, update=TRUE, priority=100, multiplicative_slowdown=-0.70, blacklisted_movetypes=(FLYING|FLOATING))
+
+/datum/reagent/medicine/hyperzine/on_mob_delete(mob/living/L)
+	L.remove_movespeed_modifier(id)
+	..()
+
+
+/datum/reagent/medicine/hyperzine/overdose_process(var/mob/living/M as mob)
+	if(prob(33))
+		M.adjustToxLoss(0.5*REM)
+		M.losebreath++
+	..()
+	return
+
