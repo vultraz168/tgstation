@@ -511,3 +511,17 @@
 		to_chat(user, "<span class='notice'>You ready your slapping hand.</span>")
 	else
 		to_chat(user, "<span class='warning'>You're incapable of slapping in your current state.</span>")
+
+/datum/emote/ree
+	key = "ree"
+	key_third_person = "rees"
+	message = "screeches."
+	message_param = "screeches at %t."
+	sound = 'sound/voice/ree.ogg'
+
+/datum/emote/ayy
+	key = "ayy"
+	key_third_person = "ayys"
+	message = "tries to mimic an alien."
+	message_param = "mimics an alien at %t."
+	sound = 'sound/voice/ayylmao.ogg'
