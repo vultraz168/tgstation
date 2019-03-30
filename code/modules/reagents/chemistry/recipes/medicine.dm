@@ -165,7 +165,7 @@
 	results = list("mannitol" = 3)
 	required_reagents = list("sugar" = 1, "hydrogen" = 1, "water" = 1)
 	mix_message = "The solution slightly bubbles, becoming thicker."
-	
+
 /datum/chemical_reaction/neurine
 	name = "Neurine"
 	id = "neurine"
@@ -264,3 +264,9 @@
 	id = "psicodine"
 	results = list("psicodine" = 5)
 	required_reagents = list( "mannitol" = 2, "water" = 2, "impedrezene" = 1)
+
+/datum/chemical_reaction/hyperzine
+	name = "Hyperzine"
+	id = "hyperzine"
+	results = list ("hyperzine" = 3)
+	required_reagents = list("sugar" = 1, "phosphorus" = 1, "sulfur" = 1,)
