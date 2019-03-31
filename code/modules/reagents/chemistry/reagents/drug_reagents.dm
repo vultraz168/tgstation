@@ -445,3 +445,37 @@
 		M.emote(pick("twitch","laugh","frown"))
 	..()
 	. = 1
+
+/datum/reagent/drug/thc
+	name = "THC"
+	id = "thc"
+	description = "Scientific name: tetrahydrocannabinol. The active ingredient in marijuana."
+	color = "#7ED066"
+	overdose_threshold = 60
+	taste_description = "earth" 
+	metabolization_rate = 0.125 * REAGENTS_METABOLISM
+
+/datum/reagent/drug/thc/on_mob_life(mob/living/carbon/M)
+	M.set_drugginess(10)
+	if(prob(2))
+		var/high_message = pick("You feel relaxed.", "You feel calmed.", "You feel less stressed.", "You feel like time is passing faster.", "You feel like time is passing slower.")
+		to_chat(M, "<span class='notice'>[high_message]</span>")
+	if(prob(10))
+		M.adjust_nutrition(-2) //Not as potent as lipolicide
+		M.overeatduration = 0
+	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "smoked", /datum/mood_event/smoked, name)
+	..()
+	return 1 
+
+/datum/reagent/drug/thc/overdose_start(mob/living/M)
+	to_chat(M, "<span class='userdanger'>You start tripping hard!</span>")
+	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[id]_overdose", /datum/mood_event/overdose, name)
+
+/datum/reagent/drug/thc/overdose_process(mob/living/M)
+	if (iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.hallucination += 5
+		C.Jitter(5)
+		if(prob(5))
+			C.vomit()
+
