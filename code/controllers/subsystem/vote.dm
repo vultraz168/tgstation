@@ -82,7 +82,6 @@ SUBSYSTEM_DEF(vote)
 /datum/controller/subsystem/vote/proc/announce_result()
 	var/list/winners = get_result()
 	var/text
-
 	if(winners.len > 0)
 		if(question)
 			text += "<b>[question]</b>"
@@ -104,20 +103,9 @@ SUBSYSTEM_DEF(vote)
 			text += "\n<b>Did not vote:</b> [GLOB.clients.len-voted.len]"
 	else
 		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
-
 	log_vote(text)
 	remove_action_buttons()
 	to_chat(world, "\n<font color='purple'>[text]</font>")
-
-	if ((mode == "restart") && (. == "Continue Playing"))
-		sound_to_all_players('sound/effects/vote/vote_fail.ogg', volume = 50)
-	else if ((mode == "gamemode") && (GLOB.master_mode == .))
-		sound_to_all_players('sound/effects/vote/vote_fail.ogg', volume = 50)
-	else if (cmptext(., "no"))
-		sound_to_all_players('sound/effects/vote/vote_fail.ogg', volume = 50)
-	else
-		sound_to_all_players('sound/effects/vote/vote_success.ogg', volume = 50)
-
 	return .
 
 /datum/controller/subsystem/vote/proc/result()
@@ -128,7 +116,6 @@ SUBSYSTEM_DEF(vote)
 			if("restart")
 				if(. == "Restart Round")
 					restart = 1
-				else
 			if("gamemode")
 				if(GLOB.master_mode != .)
 					SSticker.save_mode(.)
@@ -154,21 +141,11 @@ SUBSYSTEM_DEF(vote)
 	if(mode)
 		if(CONFIG_GET(flag/no_dead_vote) && usr.stat == DEAD && !usr.client.holder)
 			return 0
-		if(usr.ckey in voted)
-			return 0
-		if(vote && 1<=vote && vote<=choices.len)
-			voted += usr.ckey
-			choices[choices[vote]]++	//check this
-			
-			if ((mode == "restart") && (choices[vote] == "Continue Playing"))
-				sound_to_all_players('sound/effects/vote/vote_no.ogg', volume = 50)
-			else if ((mode == "gamemode") && (choices[vote] == GLOB.master_mode))
-				sound_to_all_players('sound/effects/vote/vote_no.ogg', volume = 50)
-			else if (cmptext(choices[vote], "no")) //seems reasonable
-				sound_to_all_players('sound/effects/vote/vote_no.ogg', volume = 50)
-			else
-				sound_to_all_players('sound/effects/vote/vote_yes.ogg', volume = 50)
-			return vote
+		if(!(usr.ckey in voted))
+			if(vote && 1<=vote && vote<=choices.len)
+				voted += usr.ckey
+				choices[choices[vote]]++	//check this
+				return vote
 	return 0
 
 /datum/controller/subsystem/vote/proc/initiate_vote(vote_type, initiator_key)
@@ -213,7 +190,6 @@ SUBSYSTEM_DEF(vote)
 			text += "\n[question]"
 		log_vote(text)
 		var/vp = CONFIG_GET(number/vote_period)
-		sound_to_all_players('sound/effects/vote/vote_start.ogg', volume = 50)
 		to_chat(world, "\n<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=[REF(src)]'>here</a> to place your votes.\nYou have [DisplayTimeText(vp)] to vote.</font>")
 		time_remaining = round(vp/10)
 		for(var/c in GLOB.clients)
