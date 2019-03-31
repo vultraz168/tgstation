@@ -343,7 +343,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	starts_lit = TRUE
 
 /obj/item/clothing/mask/cigarette/rollie/cannabis
-	list_reagents = list("thc" = 50)
+	list_reagents = list("thc" = 15)
 
 /obj/item/clothing/mask/cigarette/rollie/mindbreaker
 	list_reagents = list("mindbreaker" = 35, "lipolicide" = 15)
